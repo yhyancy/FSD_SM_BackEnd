@@ -1,0 +1,7 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://106.14.5.63:3306/fsd2020
+    username: mysql
+    password: 594Caoyizheng!
