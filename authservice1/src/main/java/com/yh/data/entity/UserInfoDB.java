@@ -1,5 +1,7 @@
 package com.yh.data.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,7 +25,7 @@ public class UserInfoDB {
 	private String email;
 	private String mobile_num;
 	private String confirmed;
-	private String update_ts;
+	private Date update_ts;
 	private String veri_code;
 
 }
