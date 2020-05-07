@@ -6,8 +6,10 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -27,8 +29,10 @@ public class SignupController {
 	public SignupReturn signup(@RequestBody(required = true) SignupEntity signupEntity) {	
 	
 			UserInfoDB userInfoDB = formatUserInfo(signupEntity);
-			userInfoMapper.addUser(userInfoDB);			
-			return new SignupReturn("200");		
+			userInfoMapper.addUser(userInfoDB);		
+			
+			
+			return new SignupReturn("ok");		
 		
 	}
 	private UserInfoDB formatUserInfo(SignupEntity signupEntity) {
