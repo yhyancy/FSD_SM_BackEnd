@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+// 前端传递的数据
 public class SignupEntity {
 	private String username;
 	private String usertype;

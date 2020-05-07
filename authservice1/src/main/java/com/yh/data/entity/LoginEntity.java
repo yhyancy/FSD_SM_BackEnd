@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-// 与前端传过来的参数格式保持一致
+// 前端传过来的数据
 public class LoginEntity {
 
 	public String userName;

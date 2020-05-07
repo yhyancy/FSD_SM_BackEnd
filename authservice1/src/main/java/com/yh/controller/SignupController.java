@@ -23,7 +23,7 @@ public class SignupController {
 	@Autowired
 	UserInfoMapper userInfoMapper;	
 	
-	@PostMapping("/signup")
+	@PostMapping("/signup")// 增加user数据
 	public SignupReturn signup(@RequestBody(required = true) SignupEntity signupEntity) {	
 	
 			UserInfoDB userInfoDB = formatUserInfo(signupEntity);

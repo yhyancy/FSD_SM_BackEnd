@@ -13,6 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+//后端返回给前端的数据
 public class SignupReturn {
 	private String status;
 }

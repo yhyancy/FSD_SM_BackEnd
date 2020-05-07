@@ -16,7 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-// 与数据库表结构一致
+// 与数据库表结构一致 (user_info)
 public class UserInfoDB {
 	private int id;
 	private String user_name;

@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired
 	UserInfoMapper userInfoMapper;
 	
-	@RequestMapping("/login")
+	@RequestMapping("/login") //校验前端传过来的用户名和密码
 	public LoginReturn authUnamePwd(@RequestBody(required = true) LoginEntity authUser, HttpServletRequest res, HttpServletResponse req) {
 		if(authUser==null) {
 			return new LoginReturn("","",0,"");

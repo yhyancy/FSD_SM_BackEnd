@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-//返回给前端的数据格式
+//后端返回给前端的数据
 public class LoginReturn {
 	
 	private String token;
