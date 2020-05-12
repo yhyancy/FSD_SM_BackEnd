@@ -14,24 +14,37 @@ import com.yh.data.entity.UserInfoDB;
 import com.yh.data.mapper.UserInfoMapper;
 import com.yh.tools.TokenTool;
 
+
 @RestController
-@CrossOrigin("*") //允许跨域
+@CrossOrigin("*") // allow cross domain
 public class LoginController {
-	@Autowired
-	UserInfoMapper userInfoMapper;
+	private final UserInfoMapper userInfoMapper;
 	
-	@RequestMapping("/login") //校验前端传过来的用户名和密码
+	@Autowired
+	public LoginController(UserInfoMapper userInfoMapper) {
+		this.userInfoMapper = userInfoMapper;
+	}
+	
+	@RequestMapping("/login") 
 	public LoginReturn authUnamePwd(@RequestBody(required = true) LoginEntity authUser, HttpServletRequest res, HttpServletResponse req) {
+		// 1. if authUser is null -> return 0 -> user not found
 		if(authUser==null) {
 			return new LoginReturn("","",0,"");
 		}
+		// 2. if authUser is not null, query the authUser info in db according the autherUser
 		UserInfoDB authInfoDB= userInfoMapper.selectUserByName(authUser);
-		// 密码错误
+		 // if authInfoDB is null ->   return 0 -> user not found
+		if(authInfoDB == null) {
+			return new LoginReturn("","",0,"");
+		}
+		// 3. compare whether the authUser pw in db equals authUser pw.
+		// 3.1 not equal -> return  -1 -> user password incorrect
 		if(!authInfoDB.getPassword().equals(authUser.getPassWord())) {
 			return new LoginReturn("","",-1,"");
 		}
-		// 密码正确
+		// 3.2 equal -> return user is active and generate the jwt token 
 		else {
+			//generate token
 			String token= TokenTool.getToken(authInfoDB);
 			return new LoginReturn(token,authInfoDB.getUser_name(),1,authInfoDB.getUser_type());
 		}
